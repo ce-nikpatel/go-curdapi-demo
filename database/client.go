@@ -1,7 +1,6 @@
 package database
 
 import (
-	"log"
 	"rest-go-demo/entity"
 
 	"github.com/jinzhu/gorm"
@@ -17,12 +16,12 @@ func Connect(connectionString string) error {
 	if err != nil {
 		return err
 	}
-	log.Println("Connection was successful!!")
+	// log.Println("Connection was successful!!")
 	return nil
 }
 
 // migrate database table
 func Migrate(table *entity.Person) {
 	Connector.AutoMigrate(&table)
-	log.Println("table created successfully")
+	// log.Println("table created successfully")
 }
