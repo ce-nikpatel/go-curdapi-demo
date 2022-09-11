@@ -67,3 +67,13 @@ func DeletePerson(w http.ResponseWriter, r *http.Request) {
 	})
 
 }
+
+// get all person list
+func GetPersonList(w http.ResponseWriter, r *http.Request) {
+	log.Println("start code to get all person list")
+	var persons []entity.Person
+	database.Connector.Find(&persons).Order("id DESC", true)
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+	json.NewEncoder(w).Encode(persons)
+}
